@@ -9563,6 +9563,7 @@ async function getStarted() {
                 "parent_uid": core.getInput('parent_uid', { required: true }),
                 "private_key": core.getInput('private_key', { required: true }),
             })
+        core.debug("tokenResponse: "+JSON.stringify(tokenResponse.data.data.access_token));
         const headers = {
             'Authorization': `Bearer ${tokenResponse.data.data.access_token}`,
             'x-node-id': '14955076510547972'
