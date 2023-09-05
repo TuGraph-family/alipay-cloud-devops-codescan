@@ -21,8 +21,8 @@ async function getStarted() {
         core.info("starting...")
         const tokenResponse = await axios.post('https://tcloudrunconsole.openapi.cloudrun.cloudbaseapp.cn/v2/login/serviceaccount',
             {
-                "parent_uid": "27120665446352551",
-                "private_key": "S8n6q4rHDlLsseaNEv3Scr81u7oXxkHNmR1265UCSE5mK6HzRA7BXc0IcG6arP8NeMXxlM1mMbTJqiPu1Luy7saWabszvRFQCgh3pkSB0Ziz/Mx5KQSv5FIaZn1h2pV5XpB8YZ0wQThhbmzoiwuD0crd5+8uP6HFnA36cDgdVOQ="
+                "parent_uid": core.getInput('parent_uid', { required: true }),
+                "private_key": core.getInput('private_key', { required: true }),
             })
         core.debug("tokenResponse: " + tokenResponse.data.data.access_token);
         const headers = {
