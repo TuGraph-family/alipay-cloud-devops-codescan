@@ -8,18 +8,14 @@ const repoTemplates = require('./config');
 async function getStarted() {
     let failed = false;
     try {
-        const spaceId = `600087`;
+        const spaceId = `7800020`;
         const repo = process.env.GITHUB_REPOSITORY;
         const branchRef = process.env.GITHUB_REF;
         core.debug("branchRef: " + branchRef)
         const branchName = branchRef.replace('refs/heads/','')
         core.debug("branchName: " + branchRef)
-        if (! repoTemplates[repo]){
-            core.setFailed(`该项目暂未配置,请联系管理员! 项目信息: ${repo}`)
-            core.setOutput("result","FAILED")
-            return;
-        }
-        let {projectId, templateId} = repoTemplates[repo]
+        const projectId = "9701567"
+        const templateId = 9802227
 
         //1,获取token
         core.info("starting...")
