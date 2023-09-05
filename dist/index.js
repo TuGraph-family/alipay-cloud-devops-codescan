@@ -9566,7 +9566,7 @@ async function getStarted() {
         core.debug("tokenResponse: " + tokenResponse.data.data.access_token);
         const headers = {
             'Authorization': `Bearer ${tokenResponse.data.data.access_token}`,
-            'x-node-id': '14955076510547972'
+            'x-node-id': '27120665446352551'
         };
         //2,调用代码检查
         const triggerResponse = await axios.post(`https://tdevstudio.openapi.cloudrun.cloudbaseapp.cn/webapi/v1/space/${spaceId}/project/${projectId}/pipeline/execute`,
