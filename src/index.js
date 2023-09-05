@@ -14,8 +14,8 @@ async function getStarted() {
         core.debug("branchRef: " + branchRef)
         const branchName = branchRef.replace('refs/heads/','')
         core.debug("branchName: " + branchRef)
-        const projectId = "9701567"
-        const templateId = 9802227
+        const projectId = "9701567";
+        const templateId = 9802227;
 
         //1,获取token
         core.info("starting...")
