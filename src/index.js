@@ -13,7 +13,7 @@ async function getStarted() {
         const branchRef = process.env.GITHUB_REF_NAME;
         core.debug("branchRef: " + branchRef)
         const branchName = branchRef
-        core.debug("branchName: " + branchRef)
+        core.debug("GITHUB_REF_NAME: " + branchRef)
         const projectId = "9701567";
         const templateId = 9802227;
 
