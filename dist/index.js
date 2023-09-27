@@ -9584,7 +9584,7 @@ async function getStarted() {
     try {
         const spaceId = `7800020`;
         const repo = process.env.GITHUB_REPOSITORY;
-        const branchName = process.env.GITHUB_REF_NAME;
+        const branchName = process.env.GITHUB_HEAD_REF;
         core.debug("branchName: " + branchName)
         const projectId = "9701567";
         const templateId = 9802227;
