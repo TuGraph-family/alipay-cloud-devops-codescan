@@ -3,17 +3,19 @@
 const core = require('@actions/core');
 const axios = require('axios');
 const jobProcessors = require('./jobprocessors/processors');
-const repoTemplates = require('./config');
+const {context} = require("@actions/github");
 
 async function getStarted() {
     let failed = false;
     try {
         const spaceId = `7800020`;
-        const repo = process.env.GITHUB_REPOSITORY;
-        const branchName = process.env.GITHUB_REF_NAME;
-        core.debug("branchName: " + branchName)
         const projectId = "9701567";
         const templateId = 9802227;
+        // 从参数获取branch和codeRepo
+        const branchName = process.env.GITHUB_HEAD_REF;
+        const branch = branchName.replace('refs/heads/','')
+        const codeRepo = context.payload.pull_request.head.repo.ssh_url;
+        core.debug("branchName: " + branchName)
 
         //1,获取token
         core.info("starting...")
@@ -29,7 +31,7 @@ async function getStarted() {
         };
         //2,调用代码检查
         const triggerResponse = await axios.post(`https://tdevstudio.openapi.cloudrun.cloudbaseapp.cn/webapi/v1/space/${spaceId}/project/${projectId}/pipeline/execute`,
-         {"templateId":templateId,"branch":`${branchName}`},
+         {"templateId":templateId,"branch":branch,"codeRepo": codeRepo},
         { headers: headers }
         );
         core.debug("triggerResponse: "+JSON.stringify(triggerResponse.data));
